@@ -1,0 +1,12 @@
+webdriver=chrome
+#webdriver=firefox
+
+#Chrome config
+chrome.driver.path=C:\\Users\\Tetiana\\Documents\\FinalTask\\automation-framework\\resources\\chromedriver.exe
+chrome.driver.path.key=webdriver.chrome.driver
+chrome.driver.class=org.openqa.selenium.chrome.ChromeDriver
+
+#Firefox config
+firefox.driver.path=C:\\Users\\Tetiana\\Documents\\FinalTask\\automation-framework\\resources\\geckodriver.exe
+firefox.driver.path.key=webdriver.gecko.driver
+firefox.driver.class=org.openqa.selenium.firefox.FirefoxDriver
