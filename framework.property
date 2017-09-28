@@ -10,3 +10,5 @@ chrome.driver.class=org.openqa.selenium.chrome.ChromeDriver
 firefox.driver.path=C:\\Users\\Tetiana\\Documents\\FinalTask\\automation-framework\\resources\\geckodriver.exe
 firefox.driver.path.key=webdriver.gecko.driver
 firefox.driver.class=org.openqa.selenium.firefox.FirefoxDriver
+
+csv.folder.path=C:\\Users\\Tetiana\\Documents\\FinalTask\\automation-framework\\data\\

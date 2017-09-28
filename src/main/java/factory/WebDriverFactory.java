@@ -1,6 +1,8 @@
 package factory;
 
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import exceptions.UnsupportedDriverException;
 import utils.Props;
@@ -8,10 +10,7 @@ import utils.Props;
 public class WebDriverFactory {
     private static volatile WebDriverFactory instance = null;
     private final Class<? extends WebDriver> klass;
-
-    static {
-        Props.loadProperties();
-    }
+    private static final Logger log = LoggerFactory.getLogger(WebDriverFactory.class);
 
     private WebDriverFactory() throws ClassNotFoundException {
         System.setProperty(System.getProperty(Props.WEB_DRIVER_PATH_KEY), System.getProperty(Props.WEB_DRIVER_PATH));
@@ -38,6 +37,7 @@ public class WebDriverFactory {
         try {
             return klass.newInstance();
         } catch (ReflectiveOperationException e) {
+            log.error("UnsupportedDriverException", e.getMessage());
             throw new UnsupportedDriverException(e.getMessage());
         }
     }
