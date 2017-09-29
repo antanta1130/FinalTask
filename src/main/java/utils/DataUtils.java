@@ -26,7 +26,7 @@ public final class DataUtils {
             for (CSVRecord record : records) {
                 String ex = record.get(0);
                 resultList.add(ex);
-                log.info(ex);
+                log.debug(ex);
             }
         } catch (IOException e) {
             log.error("CSVReadingException", e.getMessage());
