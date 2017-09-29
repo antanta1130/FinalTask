@@ -10,7 +10,7 @@ import utils.Props;
 public class WebDriverFactory {
     private static volatile WebDriverFactory instance = null;
     private final Class<? extends WebDriver> klass;
-    private static final Logger log = LoggerFactory.getLogger(WebDriverFactory.class);
+    private static final Logger LOG = LoggerFactory.getLogger(WebDriverFactory.class);
 
     private WebDriverFactory() throws ClassNotFoundException {
         System.setProperty(System.getProperty(Props.WEB_DRIVER_PATH_KEY), System.getProperty(Props.WEB_DRIVER_PATH));
@@ -35,9 +35,10 @@ public class WebDriverFactory {
 
     public WebDriver getDriver() {
         try {
+            LOG.info("New instance of webdriver is created");
             return klass.newInstance();
         } catch (ReflectiveOperationException e) {
-            log.error("UnsupportedDriverException", e.getMessage());
+            LOG.error("ReflectiveOperationException", e);
             throw new UnsupportedDriverException(e.getMessage());
         }
     }

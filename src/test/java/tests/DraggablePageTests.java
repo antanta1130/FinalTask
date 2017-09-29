@@ -7,7 +7,6 @@ import pages.HomePage;
 import testsuit.FunctionalTest;
 
 public class DraggablePageTests extends FunctionalTest {
-
     private static final String DRAGGABLE_HEADING = "Draggable";
     private HomePage homePage;
 

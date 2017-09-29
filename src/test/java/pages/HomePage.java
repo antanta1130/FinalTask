@@ -7,16 +7,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class HomePage extends Page {
     private static final String URL = "http://demoqa.com/";
+    private static final Logger LOG = LoggerFactory.getLogger(HomePage.class);
 
     public HomePage(WebDriver driver) {
         super(driver);
     }
-
-    // private static final Logger log =
-    // LoggerFactory.getLogger(AboutUsPage.class);
 
     @FindBy(partialLinkText = "About us")
     private WebElement aboutUsLink;
@@ -62,8 +62,10 @@ public class HomePage extends Page {
 
     public List<String> getTopMenuLinks() {
         List<String> linkNames = new ArrayList<String>();
+        LOG.debug("Top menu links from page:");
         for (WebElement link : topMenuLinks) {
             linkNames.add(link.getText());
+            LOG.debug(link.getText());
         }
         return linkNames;
     }
