@@ -4,9 +4,11 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.Rule;
+import org.junit.rules.TestName;
+import org.junit.rules.TestWatcher;
+import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +25,36 @@ public abstract class FunctionalTest {
         Props.loadProperties();
     }
 
-    @BeforeClass
+    @Rule
+    public TestName testName = new TestName();
+
+    @Rule
+    public TestWatcher testWatcher = new TestWatcher() {
+        @Override
+        protected void starting(final Description description) {
+            String methodName = description.getMethodName();
+            String className = description.getClassName();
+            className = className.substring(className.lastIndexOf('.') + 1);
+            log.info("Test: {} started, method name {}", className, methodName);
+        }
+
+        @Override
+        protected void succeeded(Description description) {
+            log.info("Test {} passed \n", description.getDisplayName());
+        }
+
+        @Override
+        protected void failed(Throwable e, Description description) {
+            log.info("Test {} failed with error {}", description.getDisplayName(), e.getStackTrace());
+        }
+
+        // @Override
+        // protected void finished(Description description) {
+        // log.info("Test {} finished", description.getDisplayName());
+        // }
+    };
+
+    // @BeforeClass
     public static void initSuit() {
         driver = WebDriverFactory.getInstance().getDriver();
         driver.manage().window().maximize();
@@ -61,7 +92,7 @@ public abstract class FunctionalTest {
         return false;
     }
 
-    @AfterClass
+    // @AfterClass
     public static void testAfterSuite() {
         driver.quit();
     }
