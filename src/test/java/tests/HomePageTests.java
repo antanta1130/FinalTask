@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
-import org.junit.runners.Parameterized.Parameters;
 
 import pages.HomePage;
 import testsuit.FunctionalTest;
@@ -21,7 +20,7 @@ public class HomePageTests extends FunctionalTest {
     @Parameter
     public String expected;
 
-    @Parameters
+    @Parameterized.Parameters(name = "menu link - {0}")
     public static List<String> data() {
         return DataUtils.getData("topMenuLinks.csv");
     }

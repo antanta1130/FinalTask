@@ -13,7 +13,7 @@ public class AboutUsPageTests extends FunctionalTest {
     private HomePage homePage;
 
     @Test
-    public void verifyAboutUseading() {
+    public void verifyAboutUsHeading() {
         homePage.open().clickOnAboutUsLink();
         Assert.assertEquals("About Us page heading is wrong!", ABOUT_US_HEADING, homePage.getPageHeader());
     }

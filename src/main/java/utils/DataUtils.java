@@ -21,6 +21,7 @@ public final class DataUtils {
         Reader in;
         List<String> resultList = new ArrayList<>();
         try {
+            log.info("Reading test parameters from csv file: {}", fileName);
             in = new FileReader(PATH_TO_CSV_FOLDER_FOR_PARAMETRIZED_TESTS + fileName);
             Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(in);
             for (CSVRecord record : records) {

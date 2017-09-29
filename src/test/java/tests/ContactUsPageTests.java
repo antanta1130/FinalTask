@@ -7,7 +7,6 @@ import pages.HomePage;
 import testsuit.FunctionalTest;
 
 public class ContactUsPageTests extends FunctionalTest {
-
     private static final String CONTACT_US_HEADING = "Contact";
     private HomePage homePage;
 

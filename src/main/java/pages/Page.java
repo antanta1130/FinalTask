@@ -7,9 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class Page {
     protected final WebDriver driver;
+    private static final Logger LOG = LoggerFactory.getLogger(HomePage.class);
 
     protected Page(WebDriver driver) {
         this.driver = driver;
@@ -17,6 +20,7 @@ public abstract class Page {
 
     protected void open(String URL) {
         driver.get(URL);
+        LOG.debug("Current url: {}", URL);
         waitForLoad();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         PageFactory.initElements(driver, this);

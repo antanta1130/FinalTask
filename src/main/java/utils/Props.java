@@ -20,7 +20,7 @@ public final class Props {
     private Props() {
     }
 
-    public static void loadProperties() {
+    static {
         Configurations configs = new Configurations();
         try {
             Configuration config = configs.properties(new File("framework.property"));
@@ -30,9 +30,13 @@ public final class Props {
             load(config, driverName, WEB_DRIVER_PATH);
             load(config, driverName, WEB_DRIVER_PATH_KEY);
             load(config, driverName, WEB_DRIVER_CLASS);
+            log.debug(System.getProperties().toString());
         } catch (ConfigurationException cex) {
             log.error(cex.getMessage());
         }
+    }
+
+    public static void loadProperties() {
     }
 
     private static void load(Configuration config, String driverName, String key) {
