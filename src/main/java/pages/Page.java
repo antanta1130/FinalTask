@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 
 public abstract class Page {
     protected final WebDriver driver;
-    private static final Logger LOG = LoggerFactory.getLogger(HomePage.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Page.class);
 
     protected Page(WebDriver driver) {
         this.driver = driver;
